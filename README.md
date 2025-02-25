@@ -1,7 +1,5 @@
-# Quantix
 # Quantix - Sistema de Gestión de Inventario
 
-## Descripción
 Quantix es un sistema de gestión de inventario diseñado para optimizar la administración de productos, ventas y créditos en tiendas locales. Permite un control eficiente del stock, generación de reportes y gestión de clientes con créditos pendientes.
 
 ## Características Principales
