@@ -12,3 +12,5 @@ router.get('/', async (req, res) => {
         res.status(404).json({ message: 'Error en la consulta Find()'})
     }
 })
+
+module.exports = router;

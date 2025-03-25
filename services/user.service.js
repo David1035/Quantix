@@ -18,7 +18,7 @@ class UserService {
     async findOne(id) {
         const user = await models.User.findAll(id);
         if(!user) {
-            throw new Error('User not found');
+            //throw new Error('User not found');
         }
         return user;
     }
