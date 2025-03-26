@@ -1,24 +1,30 @@
-const models = require('../libs/sequelize');
+const sequelize = require('../libs/sequelize');
 
 class UserService {
     constructor () {
-
+        this.model = sequelize.models.User;
+        console.log('Modelo User cargado:', this.model !== undefined);
     }
 
     async create(data) {
-        const newUser = await models.User.create(data);
+        const newUser = await this.model.create(data);
         return newUser;
     }
 
     async find() {
-        const users = await models.User.findAll();
-        return users;
+        try {
+            const users = await this.model.findAll();
+            return users;
+        } catch (error) {
+            console.error(error); // 👈 imprime el error real en la consola
+            res.status(500).json({ message: 'Error en la consulta Find()', error: error.message });
+        }
     }
 
     async findOne(id) {
-        const user = await models.User.findAll(id);
+        const user = await this.model.findByPk(id);
         if(!user) {
-            //throw new Error('User not found');
+            throw new Error('User not found');
         }
         return user;
     }

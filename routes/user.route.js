@@ -13,4 +13,15 @@ router.get('/', async (req, res) => {
     }
 })
 
+router.post('/', async (req, res) => {
+    try {
+        const data = req.body;
+        const user = await service.create(data);
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('[UserService.create] Error:', error); // 👈 Esto imprime el error real
+        res.status(400).json({ message: 'Error en la creación del usuario'})        
+    }
+})
+
 module.exports = router;
