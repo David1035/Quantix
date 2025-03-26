@@ -10,4 +10,4 @@ const config = {
     dbPort: process.env.DB_PORT,
 }
 
-module.exports = config;  // aquí exporto la configuración a la base de datos variables de entorno
+module.exports = { config };  // aquí exporto la configuración a la base de datos variables de entorno
