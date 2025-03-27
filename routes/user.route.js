@@ -1,7 +1,7 @@
 const express = require('express');
 const UserService = require('../services/user.service');
 const validadorHandler = require('../middlewares/validator.handler')
-const { createUserSchema, getUserSchema } = require('../schemas/user.schema');
+const { createUserSchema, updateUserSchema, getUserSchema } = require('../schemas/user.schema');
 
 const router = express.Router();
 const service = new UserService();
@@ -15,7 +15,9 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', 
+    validadorHandler(getUserSchema, 'params'),
+    async (req, res, next) => {
     try {
         const user = await service.findOne(req.params.id);
         res.json(user);
@@ -24,15 +26,43 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', 
+    validadorHandler(createUserSchema, 'body'),
+    async (req, res, next) => {
     try {
         const data = req.body;
         const user = await service.create(data);
         res.status(201).json(user);
     } catch (error) {
-        console.error('[UserService.create] Error:', error); // 👈 Esto imprime el error real
-        res.status(400).json({ message: 'Error en la creación del usuario'})        
+        next(error);
     }
 })
+
+router.patch('/:id',
+    validadorHandler(getUserSchema, 'params'),
+    validadorHandler(updateUserSchema, 'body'),
+    async (req, res, next) => {
+        try {
+            const { id } = req.params;
+            const changes = req.body;
+            const user = await service.update(id, changes)
+            res.json(user);
+        } catch (error) {
+            next(error);
+        }
+    }
+)
+router.delete('/:id', 
+    validadorHandler(getUserSchema, 'params'),
+    async (req, res, next) => {
+        try {
+            const rta = await service.delete(req.params.id);
+            res.json(rta);
+            
+        } catch (error) {
+            next(error)
+        }
+    }
+)
 
 module.exports = router;

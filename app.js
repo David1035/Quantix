@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const routerApi = require('./routes');
+const { logErrors, errorHandler } = require('./middlewares/error.handler')
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -14,6 +15,10 @@ app.get('/', (req, res) => {
 });
 
 routerApi(app)
+
+//Middleware al final, y se ejecutan en el orden que se especifiquen aquí
+app.use(logErrors);
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en el puerto ${port}`)
