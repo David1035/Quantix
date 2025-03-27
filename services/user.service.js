@@ -1,19 +1,20 @@
-const sequelize = require('../libs/sequelize');
+//const sequelize = require('../libs/sequelize');
+const { models } = require('../libs/sequelize');
 
 class UserService {
     constructor () {
-        this.model = sequelize.models.User;
-        console.log('Modelo User cargado:', this.model !== undefined);
+        //this.model = sequelize.models.User;
+        //console.log('Modelo User cargado:', this.model !== undefined);
     }
 
     async create(data) {
-        const newUser = await this.model.create(data);
+        const newUser = await models.User.create(data);
         return newUser;
     }
 
     async find() {
         try {
-            const users = await this.model.findAll();
+            const users = await models.User.findAll();
             return users;
         } catch (error) {
             console.error(error); // 👈 imprime el error real en la consola
@@ -22,7 +23,7 @@ class UserService {
     }
 
     async findOne(id) {
-        const user = await this.model.findByPk(id);
+        const user = await models.User.findByPk(id);
         if(!user) {
             throw new Error('User not found');
         }
