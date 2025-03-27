@@ -1,5 +1,7 @@
 const express = require('express');
 const UserService = require('../services/user.service');
+const validadorHandler = require('../middlewares/validator.handler')
+const { createUserSchema, getUserSchema } = require('../schemas/user.schema');
 
 const router = express.Router();
 const service = new UserService();
@@ -10,6 +12,15 @@ router.get('/', async (req, res) => {
         res.json(users);
     } catch (error) {
         res.status(404).json({ message: 'Error en la consulta Find()'})
+    }
+})
+
+router.get('/:id', async (req, res, next) => {
+    try {
+        const user = await service.findOne(req.params.id);
+        res.json(user);
+    } catch (error) {
+        next(error);
     }
 })
 
