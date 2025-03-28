@@ -6,8 +6,8 @@ class ClientService {
     }
 
     async getAllClients(){
-        const client = await models.Client.findAll();
-        return client;
+        const clients = await models.Client.findAll();
+        return clients;
     }
 
     async getClientById(id) {

@@ -8,8 +8,8 @@ const service = new clienteService();
 
 router.get('/', async (req, res, next) => {
     try {
-        const clientes = service.getAllClients();
-        res.json(clientes);
+        const clients = await service.getAllClients();
+        res.json(clients);
     } catch (error) {
         next(error)
     }
