@@ -1,3 +1,7 @@
+const { ValidatorError } = require('sequelize');
+const boom = require('@hapi/boom');
+const { stack } = require('sequelize/lib/utils');
+
 function logErrors(err, req, res, next) {
     console.error('[ERROR]:', err),
     next(err); // lo pasa al siguiente middleways
@@ -19,4 +23,15 @@ function boomErrorHandler(err, req, res, next) {
     }
 }
 
-module.exports = { logErrors, errorHandler, boomErrorHandler };
+//
+function ormErrorHandler (err, req, res, next) {
+    if(err instanceof ValidatorError) {
+        res.status(409).json({
+            statusCode: 409,
+            message: err.name,
+            erros: err.errors
+        })
+    }
+}
+
+module.exports = { logErrors, errorHandler, boomErrorHandler, ormErrorHandler };  // exportamos los middlewares para usarlos en otros archivos
