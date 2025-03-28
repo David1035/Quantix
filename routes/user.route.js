@@ -19,7 +19,8 @@ router.get('/:id',
     validadorHandler(getUserSchema, 'params'),
     async (req, res, next) => {
     try {
-        const user = await service.findOne(req.params.id);
+        const { id } = req.params;
+        const user = await service.findOne(id);
         res.json(user);
     } catch (error) {
         next(error);
@@ -56,7 +57,8 @@ router.delete('/:id',
     validadorHandler(getUserSchema, 'params'),
     async (req, res, next) => {
         try {
-            const rta = await service.delete(req.params.id);
+            const { id } = req.params;
+            const rta = await service.delete(id);
             res.json(rta);
             
         } catch (error) {

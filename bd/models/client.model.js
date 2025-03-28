@@ -5,25 +5,25 @@ const clientSchema = {
     id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primarykey: true,
+        primaryKey: true,
         autoIncrement: true
     }, 
     document: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.BIGINT,
         allowNull: false,
         unique: true
     },
     name: {
-        type: DataTypes.VARCHAR(70),
+        type: DataTypes.TEXT(70),
         allowNull: false
 
     },
     phone: {
-        type: DataTypes.VARCHAR(20),
+        type: DataTypes.TEXT(20),
         allowNull: false
     }, 
     estado_credito: {
-        type: DataTypes.VARCHAR(20),
+        type: DataTypes.TEXT(20),
     },
     created_at: {
         type: DataTypes.DATE,
@@ -42,7 +42,7 @@ class Client extends Model {
         return {
             sequelize, 
             tableName: CLIENT_TABLE,
-            modelName: 'client',
+            modelName: 'Client',
             timestamps: false
         }
     }

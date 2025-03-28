@@ -1,7 +1,7 @@
 const express = require('express');
 const clienteService = require('../services/client.service');
 const validadorHandler = require('../middlewares/validator.handler');
-const { createClientSchema, getClientSchema, updateClientSchema } = require('../schemas/client.schema');
+const { createClientSchema, updateClientSchema, getClientSchema } = require('../schemas/client.schema');
 
 const router = express.Router();
 const service = new clienteService();
