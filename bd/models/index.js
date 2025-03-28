@@ -1,6 +1,6 @@
 const { Model } = require('sequelize');
 const {User, UserSchema } = require('./user.model');
-const { Client, clientSchema } = require('./client.model');
+const { Client, clientSchema } = require('./model/client.model');
 const { Provider, providerSchema } = require('./provider.model')
 
 function setupModels(sequelize){

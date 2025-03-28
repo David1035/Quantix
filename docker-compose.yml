@@ -34,8 +34,8 @@ services:
     environment:
       MYSQL_DATABASE: quantix
       MYSQL_USER: root
-      MYSQL_PASSWORD: david12345
-      MYSQL_ROOT_PASSWORD: david12345
+      MYSQL_PASSWORD: david1035
+      MYSQL_ROOT_PASSWORD: david1035
     ports:
       - "3306:3306"
     volumes:
@@ -50,7 +50,7 @@ services:
       PMA_HOST: mysql
       PMA_PORT: 3306
       PMA_USER: root
-      PMA_PASSWORD: david12345
+      PMA_PASSWORD: david1035
     ports:
       - "8081:80"
     depends_on:
