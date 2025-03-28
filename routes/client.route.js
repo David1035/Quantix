@@ -9,7 +9,7 @@ const service = new clienteService();
 router.get('/', async (req, res, next) => {
     try {
         const clients = await service.getAllClients();
-        res.json(clients);
+        res.status(200).json(clients);
     } catch (error) {
         next(error)
     }

@@ -14,16 +14,16 @@ const clientSchema = {
         unique: true
     },
     name: {
-        type: DataTypes.TEXT(70),
+        type: DataTypes.STRING(70),
         allowNull: false
 
     },
     phone: {
-        type: DataTypes.TEXT(20),
+        type: DataTypes.STRING(20),
         allowNull: false
     }, 
     estado_credito: {
-        type: DataTypes.TEXT(20),
+        type: DataTypes.STRING(20),
     },
     created_at: {
         type: DataTypes.DATE,
