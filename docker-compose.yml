@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: quantix
       POSTGRES_USER: david
-      POSTGRES_PASSWORD: david12345
+      POSTGRES_PASSWORD: david1035
     ports:
       - "5432:5432"
     volumes:
@@ -27,6 +27,34 @@ services:
     restart: always
     depends_on:
       - postgres
+
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    environment:
+      MYSQL_DATABASE: quantix
+      MYSQL_USER: david
+      MYSQL_PASSWORD: david12345
+      MYSQL_ROOT_PASSWORD: david12345
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: david
+      PMA_PASSWORD: david12345
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
 
 volumes:
   postgres_data:
