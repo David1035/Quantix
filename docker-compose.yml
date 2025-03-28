@@ -33,7 +33,7 @@ services:
     container_name: mysql_db
     environment:
       MYSQL_DATABASE: quantix
-      MYSQL_USER: david
+      MYSQL_USER: root
       MYSQL_PASSWORD: david12345
       MYSQL_ROOT_PASSWORD: david12345
     ports:
@@ -49,7 +49,7 @@ services:
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
-      PMA_USER: david
+      PMA_USER: root
       PMA_PASSWORD: david12345
     ports:
       - "8081:80"
