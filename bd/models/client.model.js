@@ -33,7 +33,7 @@ const clientSchema = {
     }
 }
 
-class client extends Model {
+class Client extends Model {
     static associate(models){
         // relaciones futuras
     }
@@ -49,4 +49,4 @@ class client extends Model {
 }
 
 
-module.exports = { CLIENT_TABLE, clientSchema, client }  // exportar la clase y el schema
+module.exports = { CLIENT_TABLE, clientSchema, Client }  // exportar la clase y el schema
