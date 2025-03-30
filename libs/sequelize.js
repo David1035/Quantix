@@ -12,7 +12,7 @@ const sequelize = new Sequelize(URI, {
 });
 
 setupModels(sequelize); // ejecuta la base de datos
-sequelize.sync(); // sincroniza la base de datos. 
+//sequelize.sync(); // sincroniza la base de datos. 
 
 
 module.exports = sequelize
