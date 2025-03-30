@@ -18,6 +18,10 @@ const UserSchema = {
         allowNull: false,
         type: DataTypes.STRING(100)
     },
+    lastName: {
+        allowNull: false,
+        type: DataTypes.STRING(100)
+    },
     correo_usuario: {
         allowNull: false,
         type: DataTypes.STRING(100),

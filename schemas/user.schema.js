@@ -7,6 +7,7 @@
   const correo_usuario = Joi.string().email();
   const contrasena_usuario = Joi.string();
   const rol_usuario = Joi.string();
+  const lastName = Joi.string();
 
   // ✅ Schema para crear usuario (todos obligatorios)
   const createUserSchema = Joi.object({
@@ -14,7 +15,8 @@
     nombre_usuario: nombre_usuario.required(),
     correo_usuario: correo_usuario.required(),
     contrasena_usuario: contrasena_usuario.required(),
-    rol_usuario: rol_usuario.required()
+    rol_usuario: rol_usuario.required(),
+    lastName: lastName
   });
 
   // ✅ Schema para actualizar usuario (todos opcionales pero requiere al menos uno)
@@ -23,7 +25,8 @@
     nombre_usuario,
     correo_usuario,
     contrasena_usuario,
-    rol_usuario
+    rol_usuario,
+    lastName: lastName
   }).min(1); // ✅ permite actualizar parcialmente, pero no vacío
 
   // ✅ Schema para validar `:id` en rutas
