@@ -13,6 +13,8 @@ router.get('/', async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+
+    
 });
 
 router.get('/:id',
