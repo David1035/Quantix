@@ -20,8 +20,8 @@ const updateSaleSchema = Joi.object({
     fk_id_usuario: fk_id_usuario
 }).min(1);
 
-const deleteSaleSchema = Joi.object({ 
+const getSaleSchema = Joi.object({ 
     id: id.required()
 });
 
-module.exports = { createSaleSchema, updateSaleSchema, deleteSaleSchema }; 
+module.exports = { createSaleSchema, updateSaleSchema, getSaleSchema }; 
