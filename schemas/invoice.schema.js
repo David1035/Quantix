@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const id = Joi.number().positive().integer();
 const fecha = Joi.date();
-const monto_total = Joi.number().positive().integer();
+const monto_total = Joi.number().positive().precision(2);
 const fk_id_venta = Joi.number().positive().integer();
 
 const createInvoiceSchema = Joi.object({

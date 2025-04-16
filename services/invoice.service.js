@@ -8,7 +8,7 @@ class InvoiceService {
         return invoice;
     }
 
-    async getInvoiceById(){
+    async getInvoiceById(id){
         const invoice = await models.Invoice.findByPk(id);
         if(!invoice) {
             throw new Error('Invoice not found');
@@ -17,7 +17,7 @@ class InvoiceService {
     }
 
     async createInvoice(data){
-        const invoice = models.Invoice.create(data);
+        const invoice = await models.Invoice.create(data);
         return invoice;
     }
 
@@ -28,7 +28,7 @@ class InvoiceService {
     }
 
     async deleteInvoice(id){
-        const invoice = this.getInvoiceById(id);
+        const invoice = await this.getInvoiceById(id);
         await invoice.destroy();
         return  { id };
     }

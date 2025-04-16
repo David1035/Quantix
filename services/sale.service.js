@@ -21,13 +21,13 @@ class SaleService {
     }
 
     async updateSale(id, changes){
-        const sale = this.getSaleById(id);
+        const sale = await this.getSaleById(id);
         const rta = await sale.update(changes);
         return rta;
     }
 
     async deleteSale(id){
-        const sale = this.getSaleById(id);
+        const sale = await this.getSaleById(id);
         sale.destroy();
         return { id };
     }
