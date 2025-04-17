@@ -4,7 +4,7 @@ const {
   createSaleDetailSchema,
   updateSaleDetailSchema,
   getSaleDetailSchema
-} = require('../schemas/sale.detail.schema');
+} = require('../schemas/sale-detail.schema');
 const SaleDetailService = require('../services/sale-detail.service');
 
 const router = express.Router();
@@ -19,7 +19,7 @@ router.get('/', async (req, res, next) => {
     next(error);
   }
 });
-
+ 
 // Obtener un detalle de venta por ID
 router.get('/:id',
   validatorHandler(getSaleDetailSchema, 'params'),
