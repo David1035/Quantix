@@ -7,8 +7,8 @@ const { productSchema, PRODUCT_TABLE } = require('./../models/product.model');
 const { saleSchema, SALE_TABLE } = require('./../models/sale.model');
 const { creditSchema, CREDIT_TABLE } = require('./../models/credit.model');
 const { invoiceSchema, INVOICE_TABLE } = require('./../models/invoice.model');
-const { productProviderSchema, PRODUCT_PROVIDER_TABLE } = require('./../models/productProvider.model');
-const { saleDetailSchema, SALE_DETAIL_TABLE } = require('./../models/saleDetail.model');
+const { productProviderSchema, PRODUCT_PROVIDER_TABLE } = require('./../models/product-provider.model');
+const { saleDetailSchema, SALE_DETAIL_TABLE } = require('./../models/sale-detail.model');
 
 
 /** @type {import('sequelize-cli').Migration} */
