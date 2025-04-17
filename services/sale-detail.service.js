@@ -11,7 +11,7 @@ class SaleDetailService {
   async getSaleDetailById(id) {
     const detail = await models.SaleDetail.findByPk(id);
     if (!detail) {
-      throw new Error('Sale detail not found');
+      throw new Error('error no encontrado');
     }
     return detail;
   }

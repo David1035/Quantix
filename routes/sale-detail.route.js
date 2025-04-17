@@ -5,7 +5,7 @@ const {
   updateSaleDetailSchema,
   getSaleDetailSchema
 } = require('../schemas/sale.detail.schema');
-const SaleDetailService = require('../services/sale.detail.service');
+const SaleDetailService = require('../services/sale-detail.service');
 
 const router = express.Router();
 const service = new SaleDetailService();
@@ -71,7 +71,7 @@ router.delete('/:id',
     try {
       const { id } = req.params;
       await service.deleteSaleDetail(id);
-      res.status(200).json({ id });
+      res.status(200).json(id);
     } catch (error) {
       next(error);
     }

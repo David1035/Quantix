@@ -17,8 +17,8 @@ class ProductProviderService {
     }
 
     async createdProductProvider(data){
-        const data = await models.ProductProvider.create(data);
-        return data;
+        const createProductProvider = await models.ProductProvider.create(data);
+        return createProductProvider;
     }
 
     async updateProductProvider(id, changes){
