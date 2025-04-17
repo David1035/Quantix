@@ -20,6 +20,9 @@ function setupModels(sequelize){
     ProductProvider.init(productProviderSchema, ProductProvider.config(sequelize));
     Invoice.init(invoiceSchema, Invoice.config(sequelize));
     Credit.init(creditSchema, Credit.config(sequelize));
+
+
+    Sale.associate(sequelize.models)
 }
 
 module.exports = setupModels;

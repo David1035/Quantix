@@ -27,6 +27,10 @@ const invoiceSchema = {
 class Invoice extends Model {
   static associate(models) {
     // relaciones futuras
+    this.belongsTo(models.Sale, {
+      as: 'sale',
+      foreignKey: 'fk_id_venta'
+    })
   }
 
   static config(sequelize) {
