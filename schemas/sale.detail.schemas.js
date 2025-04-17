@@ -20,7 +20,7 @@ const updateSaleDetailSchema = Joi.object({
 });
 
 const getSaleDetailSchema = Joi.object({
-    fk_id_venta: fk_id_venta.required(),
+    id: id.require()
 })
 
 module.exports = { createSaleDetailSchema, updateSaleDetailSchema, getSaleDetailSchema }; 
