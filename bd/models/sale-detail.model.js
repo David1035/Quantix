@@ -1,4 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
+const { SALE_TABLE } = require('./sale.model');
+const { PRODUCT_TABLE } = require('./product.model');
+
+
 const SALE_DETAIL_TABLE = 'detalle_venta';
 
 const saleDetailSchema = {
@@ -11,11 +15,19 @@ const saleDetailSchema = {
   },
   fk_id_venta: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: SALE_TABLE,
+      key: 'id_venta'
+    }
   },
   fk_id_producto: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: PRODUCT_TABLE,
+      key: 'id_producto'
+    }
   },
   cantidad_venta: {
     type: DataTypes.INTEGER,
@@ -29,7 +41,14 @@ const saleDetailSchema = {
 
 class SaleDetail extends Model {
   static associate(models) {
-    // relaciones futuras
+    this.belongsTo(models.Sale, {
+      as: 'sale',
+      foreignKey: 'fk_id_venta'
+    })
+    this.belongsTo(models.Product,{
+      as: 'producto',
+      foreignKey: 'fk_id_producto'
+    })
   }
 
   static config(sequelize) {

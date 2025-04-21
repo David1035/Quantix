@@ -29,12 +29,18 @@ const saleSchema = {
 
 class Sale extends Model {
   static associate(models) {
-    // relaciones futuras
+    // relaciones futuras uno a uno
     this.hasOne(models.Invoice, {
       as: 'factura',
       foreignKey: 'fk_id_venta',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
+      })
+
+      // relación con detalle, uno a muchos
+      this.hasMany(models.SaleDetail, {
+        as: 'detalle_venta',
+        foreignKey: 'fk_id_venta',
       })
   }
 

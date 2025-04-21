@@ -1,6 +1,6 @@
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const PRODUCT_TABLE = 'products';
+const PRODUCT_TABLE = 'producto';
 
 const productSchema = {
     id: {
@@ -39,7 +39,10 @@ const productSchema = {
 
 class Product extends Model {
     static associate (models) {
-
+        this.hasMany(models.SaleDetail, {
+            as: 'detalle_venta',
+            foreignKey: 'fk_id_producto'
+        })
     }
 
     static config (sequelize) {

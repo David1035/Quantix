@@ -4,7 +4,9 @@ class SaleDetailService {
   constructor() {}
 
   async getAllSaleDetails() {
-    const details = await models.SaleDetail.findAll();
+    const details = await models.SaleDetail.findAll({
+      include: ['producto', 'sale']
+    });
     return details;
   }
 
