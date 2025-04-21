@@ -17,7 +17,7 @@ const saleDetailSchema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: SALE_TABLE,
+      model: 'venta',
       key: 'id_venta'
     }
   },
@@ -25,9 +25,11 @@ const saleDetailSchema = {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: PRODUCT_TABLE,
-      key: 'id_producto'
-    }
+      model: 'producto',
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   },
   cantidad_venta: {
     type: DataTypes.INTEGER,

@@ -37,6 +37,3 @@ module.exports = {
     await queryInterface.dropTable(SALE_DETAIL_TABLE);
   }
 };
-
-
-

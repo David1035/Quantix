@@ -21,7 +21,14 @@ const providerSchema = {
 
 class Provider extends Model {
     static associate(models) {
-
+        this.belongsToMany(models.Product, {
+            as: 'productos',
+            through: 'producto_proveedor',
+            foreignKey: 'fk_id_proveedor',
+            otherKey: 'fk_id_producto'
+          });
+          
+          
     }
 
     static config(sequelize){

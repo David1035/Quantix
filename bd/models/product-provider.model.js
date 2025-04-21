@@ -10,12 +10,24 @@ const productProviderSchema = {
     autoIncrement: true
   },
   fk_id_producto: {
-    type: DataTypes.INTEGER,
-    allowNull: false
+  type: DataTypes.INTEGER,
+  allowNull: false,
+    references: {
+      model: 'producto',
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   },
   fk_id_proveedor: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: 'provider',
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   },
   precio_compra: {
     type: DataTypes.DECIMAL(10, 2),
@@ -30,7 +42,15 @@ const productProviderSchema = {
 
 class ProductProvider extends Model {
   static associate(models) {
-    // relaciones futuras
+    this.belongsTo(models.Product, {
+      as: 'producto',
+      foreignKey: 'fk_id_producto'
+    });
+
+    this.belongsTo(models.Provider, {
+      as: 'proveedor',
+      foreignKey: 'fk_id_proveedor'
+    });
   }
 
   static config(sequelize) {

@@ -42,7 +42,16 @@ class Product extends Model {
         this.hasMany(models.SaleDetail, {
             as: 'detalle_venta',
             foreignKey: 'fk_id_producto'
-        })
+        });
+
+        this.belongsToMany(models.Provider, {
+            as: 'proveedores',
+            through: 'producto_proveedor',
+            foreignKey: 'fk_id_producto',
+            otherKey: 'fk_id_proveedor'
+          });
+          
+          
     }
 
     static config (sequelize) {
