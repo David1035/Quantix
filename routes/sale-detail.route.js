@@ -39,8 +39,7 @@ router.post('/',
   validatorHandler(createSaleDetailSchema, 'body'),
   async (req, res, next) => {
     try {
-      const data = req.body;
-      const newDetail = await service.createSaleDetail(data);
+      const newDetail = await service.createSaleDetail(req.body);
       res.status(201).json(newDetail);
     } catch (error) {
       next(error);

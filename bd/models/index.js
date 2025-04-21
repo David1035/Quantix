@@ -22,7 +22,8 @@ function setupModels(sequelize){
     Credit.init(creditSchema, Credit.config(sequelize));
 
 
-    Sale.associate(sequelize.models)
+    Sale.associate(sequelize.models);
+    Invoice.associate(sequelize.models);
 }
 
 module.exports = setupModels;

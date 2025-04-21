@@ -34,8 +34,7 @@ router.post('/',
     validatorHandler(createInvoiceSchema, 'body'),
     async(req, res, next) => {
         try {
-            const data = req.body;
-            const newInvoice = await service.createInvoice(data);
+            const newInvoice = await service.createInvoice(req.body);
             res.status(201).json(newInvoice);
         } catch (error) {
             next(error);

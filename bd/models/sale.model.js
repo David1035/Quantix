@@ -31,8 +31,10 @@ class Sale extends Model {
   static associate(models) {
     // relaciones futuras
     this.hasOne(models.Invoice, {
-      as: 'invoice',
-      foreignKey: 'fk_id_venta'
+      as: 'factura',
+      foreignKey: 'fk_id_venta',
+      onUpdate: 'CASCADE',
+      onDelete: 'CASCADE'
       })
   }
 

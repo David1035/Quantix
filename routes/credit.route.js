@@ -39,8 +39,7 @@ router.post('/',
   validatorHandler(createCreditSchema, 'body'),
   async (req, res, next) => {
     try {
-      const data = req.body;
-      const newCredit = await service.createCredit(data);
+      const newCredit = await service.createCredit(req.body);
       res.status(201).json(newCredit);
     } catch (error) {
       next(error);

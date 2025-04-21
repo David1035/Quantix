@@ -4,7 +4,9 @@ class SaleService {
     constructor(){}
 
     async getAllSale() {
-        return await models.Sale.findAll();
+        return await models.Sale.findAll({
+            include: ['factura']
+        });
     }
 
     async getSaleById(id) {
@@ -16,7 +18,9 @@ class SaleService {
     }
 
     async createSale(data) {
-        const sale = await models.Sale.create(data);
+        const sale = await models.Sale.create(data, {
+            include: ['factura']
+        });
         return sale;
     }
 

@@ -1,27 +1,35 @@
 const Joi = require('joi');
 
-const id = Joi.number().integer().positive();
-const fecha_venta = Joi.date();
-const total_venta = Joi.number();
-const fk_id_cliente = Joi.number().integer().positive();
-const fk_id_usuario = Joi.number().integer().positive();
+// Campos de la venta
+const fecha_venta = Joi.date().required();
+const total_venta = Joi.number().required();
+const fk_id_cliente = Joi.number().integer().positive().required();
+const fk_id_usuario = Joi.number().integer().positive().required();
 
-const createSaleSchema = Joi.object({
-    fecha_venta: fecha_venta.required(),
-    total_venta: total_venta.required(),
-    fk_id_cliente: fk_id_cliente.required(),
-    fk_id_usuario: fk_id_usuario.required()
-})
-
-const updateSaleSchema = Joi.object({
-    fecha_venta: fecha_venta,
-    total_venta: total_venta,
-    fk_id_cliente: fk_id_cliente,
-    fk_id_usuario: fk_id_usuario
-}).min(1);
-
-const getSaleSchema = Joi.object({ 
-    id: id.required()
+// Campo anidado: factura
+const factura = Joi.object({
+  fecha: Joi.date().required(),
+  monto_total: Joi.number().required()
 });
 
-module.exports = { createSaleSchema, updateSaleSchema, getSaleSchema }; 
+const createSaleSchema = Joi.object({
+  fecha_venta,
+  total_venta,
+  fk_id_cliente,
+  fk_id_usuario,
+  factura // ✅ aquí se acepta el objeto factura anidado
+});
+
+const getSaleSchema = Joi.object({
+  id: Joi.number().integer().positive().required()
+});
+
+const updateSaleSchema = Joi.object({
+  fecha_venta: fecha_venta.optional(),
+  total_venta: total_venta.optional(),
+  fk_id_cliente: fk_id_cliente.optional(),
+  fk_id_usuario: fk_id_usuario.optional(),
+  factura: factura.optional()
+}).min(1);
+
+module.exports = { createSaleSchema, updateSaleSchema, getSaleSchema };

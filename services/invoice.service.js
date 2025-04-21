@@ -4,7 +4,9 @@ class InvoiceService {
     constructor() {}
 
     async getAllInvoice(){
-        const invoice = await models.Invoice.findAll();
+        const invoice = await models.Invoice.findAll({
+            include: ['venta']
+        });
         return invoice;
     }
 

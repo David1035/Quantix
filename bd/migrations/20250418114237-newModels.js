@@ -25,7 +25,7 @@ module.exports = {
     await queryInterface.createTable(SALE_DETAIL_TABLE, saleDetailSchema);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     await queryInterface.dropTable(USER_TABLE);
     await queryInterface.dropTable(CLIENT_TABLE);
     await queryInterface.dropTable(PROVIDER_TABLE);
@@ -37,3 +37,4 @@ module.exports = {
     await queryInterface.dropTable(SALE_DETAIL_TABLE);
   }
 };
+
