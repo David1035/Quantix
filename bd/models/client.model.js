@@ -35,7 +35,17 @@ const clientSchema = {
 
 class Client extends Model {
     static associate(models){
-        // relaciones futuras
+        //Relación uno a muchos, un cliente puede tener muchos créditos
+        this.hasMany(models.Credit, {
+            as: 'creditos',
+            foreignKey: 'fk_id_cliente'
+        })
+
+        //relación uno a muchos, un cliente puede tener muchas ventas, una venta pertenece solo a un cliente
+        this.hasMany(models.Sale, {
+            as: 'ventas',
+            foreignKey: 'fk_id_cliente'
+        })
     }
 
     static config(sequelize){

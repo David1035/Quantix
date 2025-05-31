@@ -28,6 +28,10 @@ function setupModels(sequelize){
     Product.associate(sequelize.models);
     ProductProvider.associate?.(sequelize.models);
     Provider.associate(sequelize.models);
+    Client.associate(sequelize.models);
+    Credit.associate(sequelize.models);
+    User.associate(sequelize.models);
+
 }
 
 module.exports = setupModels;

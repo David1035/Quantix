@@ -5,7 +5,7 @@ class SaleService {
 
     async getAllSale() {
         return await models.Sale.findAll({
-            include: ['factura']
+            include: ['factura', 'cliente', 'usuario', 'detalle_venta']
         });
     }
 
@@ -19,7 +19,7 @@ class SaleService {
 
     async createSale(data) {
         const sale = await models.Sale.create(data, {
-            include: ['factura']
+            include: ['factura', 'detalle_venta']
         });
         return sale;
     }

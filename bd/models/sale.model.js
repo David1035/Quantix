@@ -19,11 +19,23 @@ const saleSchema = {
   },
   fk_id_cliente: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
+    references: {
+      model: 'client',
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   },
   fk_id_usuario: {
     type: DataTypes.INTEGER,
-    allowNull: true
+    allowNull: true,
+    references: {
+      model: 'users',
+      key: 'id_usuario'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   }
 };
 
@@ -35,6 +47,16 @@ class Sale extends Model {
       foreignKey: 'fk_id_venta',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE'
+      })
+
+      this.belongsTo(models.Client, {
+        as: 'cliente',
+        foreignKey: 'fk_id_cliente'
+      })
+
+      this.belongsTo(models.User, {
+        as: 'usuario',
+        foreignKey: 'fk_id_usuario'
       })
 
       // relación con detalle, uno a muchos

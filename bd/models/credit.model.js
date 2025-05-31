@@ -20,13 +20,22 @@ const creditSchema = {
   },
   fk_id_cliente: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references: {
+      model: 'client',
+      key: 'id'
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE'
   }
 };
 
 class Credit extends Model {
   static associate(models) {
-    // relaciones futuras
+    this.belongsTo(models.Client, {
+      as: 'cliente',
+      foreignKey: 'fk_id_cliente'
+    })
   }
 
   static config(sequelize) {
